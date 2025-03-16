@@ -21,9 +21,9 @@ def get_met_art():
                 
                 if "primaryImage" in object_data and object_data["primaryImage"]:
                     image_url = object_data["primaryImage"]
-                    title = object_data.get('title', '')
-                    artist = object_data.get('artistDisplayName', '')
-                    date = object_data.get('objectDate', '')
+                    title = object_data.get('title')
+                    artist = object_data.get('artistDisplayName')
+                    date = object_data.get('objectDate')
 
                     print("-----------------------------")
                     print(f"Artwork: {title if title else 'Unknown'}")
