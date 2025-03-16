@@ -12,10 +12,7 @@ def get_met_image():
             data = json.loads(response.read().decode())
 
         if data["total"] > 0:
-            # Chooses a random object ID from the search results
-            object_id = random.choice(data["objectIDs"])
-
-            # Fetches the details of the chosen object
+            object_id = random.choice(data["objectIDs"]) # Chooses a random object ID from the results
             object_url = f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{object_id}"
 
             try:
@@ -34,21 +31,19 @@ def get_met_image():
                     print(f"Date: {date if date else 'Unknown'}")
                     print(f"Image URL: {image_url}")
                     print("-----------------------------")
-                    return
 
-                # Handling for any exceptions that may occur along the way
                 else:
-                    return print("No image available for this object, please try again.")
+                    print("No image available for this object, please try again.")
             except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError) as e:
-                return print(f"Error retrieving artwork details: {e}. Please try again.")
+                print(f"Error retrieving artwork details: {e}. Please try again.")
         else:
-            return print("No objects found, please try again.")
+            print("No objects found, please try again.")
     except (urllib.error.URLError, urllib.error.HTTPError) as e:
-        return print(f"Error connecting to Met API: {e}. Please check your internet connection and try again.")
+        print(f"Error connecting to Met API: {e}. Please check your internet connection and try again.")
     except json.JSONDecodeError as e:
-        return print(f"Error processing API response: {e}. The Met API may be experiencing issues.")
+        print(f"Error processing API response: {e}. The Met API may be experiencing issues.")
     except Exception as e:
-        return print(f"An unexpected error occurred: {e}")
+        print(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
     get_met_image()
