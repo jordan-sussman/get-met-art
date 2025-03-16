@@ -2,7 +2,7 @@ import urllib.request
 import json
 import random
 
-def get_met_image():
+def get_met_art():
     # The Metropolitan Museum of Art Collection API
     # Fetches a random artwork with an image from the their collection
     search_url = f"https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=painting"
@@ -46,4 +46,4 @@ def get_met_image():
         print(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
-    get_met_image()
+    get_met_art()
